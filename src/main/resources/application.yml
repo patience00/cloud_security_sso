@@ -1,0 +1,51 @@
+
+server:
+  port: ${APP_PORT}
+spring:
+  application:
+    name: sso
+  datasource:
+    url: ${USER_MYSQL_DATABASE}
+    username: ${USER_MYSQL_USERNAME}
+    password: ${USER_MYSQL_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      filters: stat,wall
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      initial-size: 1
+      min-idle: 1
+      max-active: 30
+      max-wait: 10000
+      time-between-eviction-runs-millis: 20000
+      validation-query: SELECT 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 5000
+          merge-sql: true
+      max-pool-prepared-statement-per-connection-size: 20
+      connect-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  redis:
+    database: ${USER_REDIS_DATABASE}
+    host: ${USER_REDIS_HOST}
+    password: ${USER_REDIS_PASSWORD}
+    timeout: 1000
+    port: ${USER_REDIS_PORT}
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+eureka:
+  instance:
+    preferIpAddress: true
+    ipAddress: 10.50.40.239
+    instance-id: ${eureka.instance.ipAddress}:${server.port}:${spring.application.name}
+  client:
+    serviceUrl:
+      defaultZone: http://${eurekaServer:localhost}:8761/eureka/
+
