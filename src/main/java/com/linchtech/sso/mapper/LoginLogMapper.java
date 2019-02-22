@@ -2,7 +2,7 @@ package com.linchtech.sso.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.linchtech.sso.entity.BlogUser;
+import com.linchtech.sso.entity.LoginLog;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -12,10 +12,10 @@ import org.springframework.stereotype.Repository;
  * </p>
  *
  * @author 107
- * @since 2019-02-21
+ * @since 2019-02-22
  */
-@Repository
 @Mapper
-public interface UserMapper extends BaseMapper<BlogUser> {
+@Repository
+public interface LoginLogMapper extends BaseMapper<LoginLog> {
 
 }

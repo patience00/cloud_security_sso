@@ -26,7 +26,7 @@ import java.util.Objects;
  * @description:
  * @Review:
  */
-@Service
+@Service("userDetailsService")
 public class UserDetailConfig implements UserDetailsService {
 
     private final UserMapper userMapper;
@@ -45,7 +45,7 @@ public class UserDetailConfig implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         QueryWrapper<BlogUser> wrapper = new QueryWrapper<>();
-        wrapper.eq("phone", s);
+        wrapper.eq("name", s);
         BlogUser blogUser = userMapper.selectOne(wrapper);
         boolean accountNonLocked = true;
         if (Objects.isNull(blogUser)) {

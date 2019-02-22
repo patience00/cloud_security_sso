@@ -19,7 +19,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers(
-                        "/login"
+                        "/user/validate",
+                        "/user/complete",
+                        "/**/*.js"
                 )
                 // 访问上面路径无需登录认证权限
                 .permitAll()

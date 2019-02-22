@@ -2,6 +2,7 @@ package com.linchtech.sso.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.linchtech.sso.entity.UserPermission;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,5 +12,6 @@ import org.springframework.stereotype.Repository;
  * @Review:
  */
 @Repository
+@Mapper
 public interface UserPermissionMapper extends BaseMapper<UserPermission> {
 }
